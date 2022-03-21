@@ -8,21 +8,37 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SimchaFund.Data;
+
 
 
 namespace SimchaFund.Web.Controllers
 {
     public class HomeController : Controller
     {
-      
+        private string _connectionString = @"Data Source=.\sqlexpress;Initial Catalog=SimchaFund;Integrated Security=true;";
 
         public IActionResult Index()
         {
-            return View();
+            SimchaDatabase manager = new SimchaDatabase(_connectionString);
+            SimchaViewModel vm = new SimchaViewModel();
+            vm.Simchos = manager.GetAllSimchos();
+            
+            return View(vm);
         }
 
       public IActionResult Contributors()
         {
+            SimchaDatabase db = new SimchaDatabase(_connectionString);
+            ContributorViewModel vm = new();
+            vm.Contributors = db.GetAllContributors();
+            return View(vm);
+        }
+
+        public ShowHistory (int contributorId)
+        {
+            SimchaDatabase db = new SimchaDatabase(_connectionString);
+            
             return View();
         }
     }

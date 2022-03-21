@@ -2,7 +2,8 @@
 @model SimchaViewModel
 <div class="container">
     <main role="main" class="pb-3" style="margin-top: 60px;">
-
+        
+       
         <div class="header">
             <h1>Simchas</h1>
         </div>
@@ -22,19 +23,19 @@
                         <th>Date</th>
                     </tr>
                 </thead>
-               <tbody>
-                   @foreach (Simcha simcha in Model.Simchos)
-                   {
-                <tr>
-                    <td>
-                        <a class="btn btn-primary" href="/simchas/contributions?simchaid={@simcha.SimchaId}">Contributions</a>
-                    </td>
-                    <td>@simcha.Name</td>
-                    <td>@simcha.Date</td>
-                </tr>
-            }
-               </tbody>           
-              
+                <tbody>
+                    @foreach (Simcha simcha in Model.Simchos)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-primary" href="/simchas/contributions?simchaid={@simcha.SimchaId}">Contributions</a>
+                            </td>
+                            <td>@simcha.Name</td>
+                            <td>@simcha.Date</td>
+                        </tr>
+                    }
+                </tbody>
+
             </table>
         </div>
         <div class="modal fade" tabindex="-1" role="dialog">
@@ -65,5 +66,5 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        </main>
+    </main>
 </div>

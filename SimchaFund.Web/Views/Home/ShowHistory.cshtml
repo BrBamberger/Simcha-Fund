@@ -1,0 +1,30 @@
+﻿@using SimchaFund.Data
+@model ContributorViewModel
+<div class="header">
+    <h1>History for {Insert Name Here}</h1>
+    <h3>Current Balance: Contributor's' Balance</h3>
+</div>
+
+<div class="row header">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Action</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+           @foreach (var contrib in Model.Contributions)
+            {
+                <tr>
+                    <td>@contrib.Action</td>
+                    <td>@contrib.Date.ToShortDateString()</td>
+                    <td>@contrib.Amount</td>
+                </tr>
+            }
+          
+            </table>
+</div>
+    </div>
+            <div style="text-align:center;">
+                <a class="btn-lg btn-danger" href="/Home/Contributors">Back to Contributors</a>
+            </div>
